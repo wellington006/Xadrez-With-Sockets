@@ -26,8 +26,8 @@ function restartGame() {
     cleanCemetery()
     cleanAuxiliaryInput()
     unlockEvents()
-    configTimer('r')
-    socket.emit('refreshGame', document.querySelector('#board').innerHTML, document.querySelector('#play-counter').value) //Atualizar jogo e contador
+    configTimer('r') // TODO
+    // socket.emit('refreshGame', document.querySelector('#board').innerHTML, document.querySelector('#play-counter').value) //Atualizar jogo e contador
 }
 
 function cleanAuxiliaryInput() {
