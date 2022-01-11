@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Jogo de Xadrez</title>
+</head>
+<!-- onload="apresentarTelaVitoria('white')" -->
+
+<body>
+    <div class="initial-screen">
+        <!-- Primeira tela -->
+        <div class="title-initial-screen">
+            <h1>Xadrez</h1>
+        </div>
+        <div class="curiosities-initial-screen">
+            <h3>Curiosidades</h3>
+            <p> <i class="fa fa-chevron-right" aria-hidden="true"></i> O xadrez surgiu por volta do século V na Pérsia
+            </p>
+            <p> <i class="fa fa-chevron-right" aria-hidden="true"></i> Benjamin Franklin era um grande entusiasta do
+                xadrez</p>
+            <p> <i class="fa fa-chevron-right" aria-hidden="true"></i> Depois de apenas 4 lances, o número de
+                combinações possíveis do jogo chega a 315 bilhões!</p>
+            <p> <i class="fa fa-chevron-right" aria-hidden="true"></i> “Xaque-mate” é uma expressão do jogo de xadrez
+                que significa “o rei está morto”. Ela vem da frase persa “Shah Mat”</p>
+            <p> <i class="fa fa-chevron-right" aria-hidden="true"></i> Na Romênia, não só o Xadrez é uma disciplina
+                obrigatória, como 33% da nota de Matemática dos alunos depende do desempenho no jogo.</p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="initial-screen-footer">
+            <input type="button" value="Start" id="bt-start" onclick="start()">
+        </div>
+    </div>
+    <div class="container">
+        <div class="aside">
+            <input type="number" hidden value="1" id="play-counter">
+            <input type="text" hidden value="" id="selected-piece"> <!-- Peça selecionada para jogar -->
+            <input type="text" hidden value="" id="destiny-selected"> <!-- position para realizar jogada -->
+            <div class="header">
+                <div class="timer-container">
+                    <h3 id="timer">00:00:00</h3>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-title">
+                    <h1>Menu</h1>
+                </div>
+                <div class="menu-options">
+                    <div class="menu-option"><input type="button" value="Reiniciar" onclick="restartGame()"></div>
+                    <div class="menu-option"><input type="button" value="Convidar" onclick="invitePlayer2()"></div>
+                    <div class="menu-option"><input type="button" value="Ajuda" onclick="showHelpScreen()"></div>
+                    <div class="menu-option"><input type="button" value="Sobre" onclick="aboutXadrez()"></div>
+                </div>
+            </div>
+            <div class="chat">
+                <div class="chat-container">
+                    <div class="display-msg">
+                        <!-- <p>Use o chat para dialogar com seu adversário</p> -->
+                    </div>
+                    <div class="input-msg">
+                        <div class="input-text">
+                            <input type="text" value="" id="msg">
+                        </div>
+                        <div class="bt-send-msg">
+                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="game-area">
+            <div class="white-cemetery">
+                <div class="player-name player-name-w">
+                    <h3 id="player-white">White</h3>
+                </div>
+                <div class="columns">
+                    <div class="cemetery-column">
+                        <div class="cemetery-position" id='cw1'></div>
+                        <div class="cemetery-position" id='cw2'></div>
+                        <div class="cemetery-position" id='cw3'></div>
+                        <div class="cemetery-position" id='cw4'></div>
+                        <div class="cemetery-position" id='cw5'></div>
+                        <div class="cemetery-position" id='cw6'></div>
+                        <div class="cemetery-position" id='cw7'></div>
+                        <div class="cemetery-position" id='cw8'></div>
+                    </div>
+                    <div class="cemetery-column">
+                        <div class="cemetery-position" id='cw9'></div>
+                        <div class="cemetery-position" id='cw10'></div>
+                        <div class="cemetery-position" id='cw11'></div>
+                        <div class="cemetery-position" id='cw12'></div>
+                        <div class="cemetery-position" id='cw13'></div>
+                        <div class="cemetery-position" id='cw14'></div>
+                        <div class="cemetery-position" id='cw15'></div>
+                        <div class="cemetery-position" id='cw16'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-container" id="board">
+                <!-- Contagem de linhas feita de baixo para cima -->
+                <div class="row">
+                    <!-- Linha 8 -->
+                    <div class="position pos-white" id="a8" onclick="selectPiece(this)">a8</div>
+                    <div class="position pos-black" id="b8" onclick="selectPiece(this)">b8</div>
+                    <div class="position pos-white" id="c8" onclick="selectPiece(this)">c8</div>
+                    <div class="position pos-black" id="d8" onclick="selectPiece(this)">d8</div>
+                    <div class="position pos-white" id="e8" onclick="selectPiece(this)">e8</div>
+                    <div class="position pos-black" id="f8" onclick="selectPiece(this)">f8</div>
+                    <div class="position pos-white" id="g8" onclick="selectPiece(this)">g8</div>
+                    <div class="position pos-black" id="h8" onclick="selectPiece(this)">h8</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 7 -->
+                    <div class="position pos-black" id="a7" onclick="selectPiece(this)">a7</div>
+                    <div class="position pos-white" id="b7" onclick="selectPiece(this)">b7</div>
+                    <div class="position pos-black" id="c7" onclick="selectPiece(this)">c7</div>
+                    <div class="position pos-white" id="d7" onclick="selectPiece(this)">d7</div>
+                    <div class="position pos-black" id="e7" onclick="selectPiece(this)">e7</div>
+                    <div class="position pos-white" id="f7" onclick="selectPiece(this)">f7</div>
+                    <div class="position pos-black" id="g7" onclick="selectPiece(this)">g7</div>
+                    <div class="position pos-white" id="h7" onclick="selectPiece(this)">h7</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 6 -->
+                    <div class="position pos-white" id="a6" onclick="selectPiece(this)">a6</div>
+                    <div class="position pos-black" id="b6" onclick="selectPiece(this)">b6</div>
+                    <div class="position pos-white" id="c6" onclick="selectPiece(this)">c6</div>
+                    <div class="position pos-black" id="d6" onclick="selectPiece(this)">d6</div>
+                    <div class="position pos-white" id="e6" onclick="selectPiece(this)">e6</div>
+                    <div class="position pos-black" id="f6" onclick="selectPiece(this)">f6</div>
+                    <div class="position pos-white" id="g6" onclick="selectPiece(this)">g6</div>
+                    <div class="position pos-black" id="h6" onclick="selectPiece(this)">h6</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 5 -->
+                    <div class="position pos-black" id="a5" onclick="selectPiece(this)">a5</div>
+                    <div class="position pos-white" id="b5" onclick="selectPiece(this)">b5</div>
+                    <div class="position pos-black" id="c5" onclick="selectPiece(this)">c5</div>
+                    <div class="position pos-white" id="d5" onclick="selectPiece(this)">d5</div>
+                    <div class="position pos-black" id="e5" onclick="selectPiece(this)">e5</div>
+                    <div class="position pos-white" id="f5" onclick="selectPiece(this)">f5</div>
+                    <div class="position pos-black" id="g5" onclick="selectPiece(this)">g5</div>
+                    <div class="position pos-white" id="h5" onclick="selectPiece(this)">h5</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 4 -->
+                    <div class="position pos-white" id="a4" onclick="selectPiece(this)">a4</div>
+                    <div class="position pos-black" id="b4" onclick="selectPiece(this)">b4</div>
+                    <div class="position pos-white" id="c4" onclick="selectPiece(this)">c4</div>
+                    <div class="position pos-black" id="d4" onclick="selectPiece(this)">d4</div>
+                    <div class="position pos-white" id="e4" onclick="selectPiece(this)">e4</div>
+                    <div class="position pos-black" id="f4" onclick="selectPiece(this)">f4</div>
+                    <div class="position pos-white" id="g4" onclick="selectPiece(this)">g4</div>
+                    <div class="position pos-black" id="h4" onclick="selectPiece(this)">h4</div>
+                </div>
+
+                <div class="row">
+                    <!-- Linha 3 -->
+                    <div class="position pos-black" id="a3" onclick="selectPiece(this)">a3</div>
+                    <div class="position pos-white" id="b3" onclick="selectPiece(this)">b3</div>
+                    <div class="position pos-black" id="c3" onclick="selectPiece(this)">c3</div>
+                    <div class="position pos-white" id="d3" onclick="selectPiece(this)">d3</div>
+                    <div class="position pos-black" id="e3" onclick="selectPiece(this)">e3</div>
+                    <div class="position pos-white" id="f3" onclick="selectPiece(this)">f3</div>
+                    <div class="position pos-black" id="g3" onclick="selectPiece(this)">g3</div>
+                    <div class="position pos-white" id="h3" onclick="selectPiece(this)">h3</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 2 -->
+                    <div class="position pos-white" id="a2" onclick="selectPiece(this)">a2</div>
+                    <div class="position pos-black" id="b2" onclick="selectPiece(this)">b2</div>
+                    <div class="position pos-white" id="c2" onclick="selectPiece(this)">c2</div>
+                    <div class="position pos-black" id="d2" onclick="selectPiece(this)">d2</div>
+                    <div class="position pos-white" id="e2" onclick="selectPiece(this)">e2</div>
+                    <div class="position pos-black" id="f2" onclick="selectPiece(this)">f2</div>
+                    <div class="position pos-white" id="g2" onclick="selectPiece(this)">g2</div>
+                    <div class="position pos-black" id="h2" onclick="selectPiece(this)">h2</div>
+                </div>
+                <div class="row">
+                    <!-- Linha 1 -->
+                    <div class="position pos-black" id="a1" onclick="selectPiece(this)">a1</div>
+                    <div class="position pos-white" id="b1" onclick="selectPiece(this)">b1</div>
+                    <div class="position pos-black" id="c1" onclick="selectPiece(this)">c1</div>
+                    <div class="position pos-white" id="d1" onclick="selectPiece(this)">d1</div>
+                    <div class="position pos-black" id="e1" onclick="selectPiece(this)">e1</div>
+                    <div class="position pos-white" id="f1" onclick="selectPiece(this)">f1</div>
+                    <div class="position pos-black" id="g1" onclick="selectPiece(this)">g1</div>
+                    <div class="position pos-white" id="h1" onclick="selectPiece(this)">h1</div>
+                </div>
+            </div>
+            <div class="black-cemetery">
+                <div class="player-name player-name-b">
+                    <h3 id="player-black">Black</h3>
+                </div>
+                <div class="columns">
+                    <div class="cemetery-column">
+                        <div class="cemetery-position" id='cb1'></div>
+                        <div class="cemetery-position" id='cb2'></div>
+                        <div class="cemetery-position" id='cb3'></div>
+                        <div class="cemetery-position" id='cb4'></div>
+                        <div class="cemetery-position" id='cb5'></div>
+                        <div class="cemetery-position" id='cb6'></div>
+                        <div class="cemetery-position" id='cb7'></div>
+                        <div class="cemetery-position" id='cb8'></div>
+                    </div>
+                    <div class="cemetery-column">
+                        <div class="cemetery-position" id='cb9'></div>
+                        <div class="cemetery-position" id='cb10'></div>
+                        <div class="cemetery-position" id='cb11'></div>
+                        <div class="cemetery-position" id='cb12'></div>
+                        <div class="cemetery-position" id='cb13'></div>
+                        <div class="cemetery-position" id='cb14'></div>
+                        <div class="cemetery-position" id='cb15'></div>
+                        <div class="cemetery-position" id='cb16'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-screen">
+        <span class="error-message"></span>
+    </div>
+    <div class="change-piece">
+        <div class="change-piece-header">
+            <h3>O seu peão alcançou o outro lado do tabuleiro, escolha uma peça para promoção:</h3>
+        </div>
+        <div class="change-piece-body">
+            <img class="exchange-pieces">
+            <img class="exchange-pieces">
+            <img class="exchange-pieces">
+            <img class="exchange-pieces">
+        </div>
+    </div>
+    <div class="victory-screen">
+        <!-- Tela que aparece quando alguem vence -->
+        <div class="victory-screen-header">
+            <button class="bt-close-modal" id='bt-close-victory-screen'><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="victory-screen-body">
+            <h1 class="winning-log">Parabéns Keila!</h1>
+        </div>
+    </div>
+    <div class="help-screen">
+        <div class="help-screen-header">
+            <button class="bt-close-modal" id='bt-close-help-screen'><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="help-screen-body">
+            <div class="help-screen-aside">
+                <ul>
+                    <u>Peças</u>
+                    <li>Peão</li>
+                    <li>Torre</li>
+                    <li>Cavalo</li>
+                    <li>Bispo</li>
+                    <li>Rainha</li>
+                    <li>Rei</li>
+                </ul>
+                <ul>
+                    <u>Regras</u>
+                    <li>Vitória</li>
+                    <li>Promoção</li>
+                </ul>
+            </div>
+            <div class="help-screen-body-inner">
+                <h3></h3>
+                <div class="help-screen-body-content">
+                    <div class="help-screen-info">
+                        <p></p>
+                    </div>
+                    <div class="help-screen-image">
+                        <img>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/script/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        let socket = io('http://localhost:779')
+
+        let player
+        document.querySelector('#bt-start').onmouseup = () => {
+            player = window.prompt('Digite seu nome: ')
+
+            document.querySelectorAll('.player-name > h3').forEach(playerArea => {
+                if (playerArea.innerText == 'White') {
+                    document.querySelector('#player-white').innerText = player
+                } else {
+                    if (playerArea.innerText == 'Black') {
+                        document.querySelector('#player-black').innerText = player
+                    }
+                }
+            })
+
+            socket.emit('setPlayer', player)
+        }
+
+        socket.on('setPlayers', players => {
+            document.querySelector('#player-white').innerText = players.player1
+            document.querySelector('#player-black').innerText = players.player2
+            configTimer('r')
+        })
+
+        function renderMessage(message) {
+            console.log(message)
+            let displayMsg = document.querySelector('.display-msg')
+            displayMsg.innerHTML += `<p><strong>${message.autor}:</strong> ${message.textMessage}</p>`
+            displayMsg.scrollTop = displayMsg.scrollHeight // Faz o scrol rolar para baixo
+        }
+
+        socket.on('receiveMessage', (message) => {
+            renderMessage(message)
+        })
+
+        document.getElementById('msg').onkeypress = (e) => { // Caixa de message
+            e.keyCode == 13 ? sendMessage() : null
+        }
+
+        let btSend = document.querySelector('.bt-send-msg')
+        btSend.addEventListener('click', sendMessage)
+
+        function sendMessage() {
+
+            let autor = player
+            let textMessage = document.getElementById('msg').value
+
+            if (textMessage.length) {
+                let message = {
+                    autor: autor,
+                    textMessage: textMessage
+                }
+
+                socket.emit('sendMessage', message)
+                // renderMessage(message)
+                document.getElementById('msg').value = '' // Limpa Caixa de message
+                // document.getElementById('msg').focus() = '' // Foca Caixa de message
+            }
+        }
+
+        socket.on('refresh', (currentGame, playCounter) => {
+            document.querySelector('#board').innerHTML = currentGame // Atualiza jogo
+            document.querySelector('#play-counter').value = playCounter // Atualiza contador
+        })
+
+        
+    </script>
+</body>
+
+</html>

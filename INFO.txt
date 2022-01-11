@@ -1,0 +1,2 @@
+Ferramenta de desenvolvimento: Visual Studio Code v1.44.2.0
+Linguagens: HTML, CSS, JavaScript

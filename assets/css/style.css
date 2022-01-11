@@ -1,0 +1,552 @@
+*, *::before, ::after {
+    padding: 0;
+    margin: 0
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#clipboard{ /* Área de colagem */
+    border: none;
+    position: absolute;
+}
+
+.initial-screen{
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    background-color: rgb(110, 110, 110);  
+    overflow: hidden;  
+    display: flex; /* Display flex */
+    justify-content: space-around;
+    flex-direction: column;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 5000px black  ;
+}
+
+.title-initial-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 3px black;
+    height: 20%;
+}
+
+.curiosities-initial-screen{
+    font-size: 1.2em;
+    text-shadow: 1px 1px 1px black;
+    color: white;
+    height: 60%;
+}
+
+.curiosities-initial-screen h3{
+    margin: 10px 30px;
+}
+
+.curiosities-initial-screen p{
+    margin: 20px 60px;
+}
+
+.curiosities-initial-screen i{
+    color: black;
+}
+
+.initial-screen-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 1px black;
+    height: 20%;
+}
+
+.initial-screen-footer input{
+    padding: 20px 60px;
+    background-color: black;
+    color: white;
+    font-size: 1em;
+    border-radius: 12px;
+}
+
+.container {
+    width: 1280px;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.aside {
+    width: 25%;
+    height: 654px;
+    background-image: url('../img/background-lateral.jpg');
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px white;
+}
+
+.header {
+    width: 100%;
+    height: 10%;
+}
+
+.timer-container {
+    text-align: end;
+}
+
+#timer {
+    font-size: 25pt;
+    margin: 10px 15px 0px 0px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.menu {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-title {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 1px 2px black;
+}
+
+.menu-options {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-options .menu-option {
+    width: 100%;
+}
+
+.menu-option {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-options input {
+    padding: 10px;
+    width: 62%;
+    border-radius: 25px;
+    border: 3px solid white;
+    background-color: transparent;
+    font-size: 12pt;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 1px 2px black;
+    cursor: pointer;
+    outline: none;
+}
+
+.menu-options input:hover{
+    background-color: black;
+    color:white;
+}
+
+.help-screen{
+    width: 800px;
+    height: 0px;
+    position: absolute;
+    /* background-color: rgb(110, 110, 110);   */
+    background-color: white;
+    overflow: hidden;  
+    display: flex; /* Display flex */
+    justify-content: space-around;
+    flex-direction: column;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 5000px black  ;
+}
+
+.help-screen-header{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px;
+}
+
+.help-screen-body{
+    height: 96%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.help-screen-aside{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px black;
+}
+
+.help-screen-aside ul{
+    font-size: 1.8em;
+    list-style: none;
+    overflow: hidden;
+    height: 34px;
+    margin-top: 10px;
+    cursor: pointer; 
+    transition-duration: 0.5s;
+}
+
+.help-screen-aside li{
+    margin-left: 20px;
+    font-size: 0.8em;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+.help-screen-aside li:hover{
+    background-color: rgb(184, 184, 184);
+    border-left: 5px solid black;
+}
+
+.help-screen-body-inner{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.help-screen-body-inner h3{
+    font-size: 30px;
+    height: 5%;
+    text-align: center;
+    padding: 10px;
+}
+
+.help-screen-body-content{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 95%;
+}
+
+.help-screen-info{
+    height: 35%;
+    font-size: 1.1em;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(192, 192, 192);
+    border-radius: 50px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(94, 94, 94);
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000; 
+  }
+
+.help-screen-info p{
+    margin: 10px 20px;
+}
+
+.help-screen-image{
+    overflow: hidden;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-container {
+    width: 85%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid white;
+    box-shadow: 1px 1px 1px black;
+    background-color: #b9b9ad;
+}
+
+.display-msg {
+    height: 85%;
+    margin: 5px;
+    line-height: 25px;
+    overflow: auto;
+}
+
+.display-msg p {
+    font-size: 14px;
+    background-color: white;
+    margin: 4px;
+    color: black;
+    padding: 2px 2px 2px 10px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px black;
+    line-height: 16px;
+}
+
+.input-msg {
+    height: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-text {
+    height: 100%;
+    width: 86%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: white;
+}
+
+.input-text input {
+    height: 70%;
+    width: 100%;
+    border: none;
+    margin: 0px 8px;
+    outline: 5px;
+}
+
+.bt-send-msg {
+    background-color: white;
+    height: 100%;
+    width: 14%;
+    cursor: pointer;
+    border: none;
+}
+
+.bt-send-msg i:hover{
+    color: #875d26;
+}
+
+.bt-send-msg i {
+    color: black;
+    font-size: 37px;
+    text-justify: center;
+}
+
+.game-area {
+    width: 75%;
+    height: 654px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.white-cemetery {
+    width: 15%;
+    background-color: #b9b9ad;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid white;
+}
+
+.player-name {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.player-name-w{
+    background-color: white;
+    box-shadow: 1px 1px 4px black;
+
+
+}
+.player-name-w h3{
+    color: black;
+}
+
+.columns {
+    display: flex;
+}
+
+.cemetery-column {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cemetery-position{
+    height: 55px;
+    width: 55px;
+    margin: 6.75px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.2em;
+}
+
+.board-container {
+    background-color:yellow;
+    width: 650px;
+    height: 650px;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0.5px 0.5px 12px black;
+}
+
+.row {
+    height: 81.25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.position {
+    width: 81.25px;
+    height: 81.25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.position:hover {
+    opacity: 0.5;
+}
+
+.pos-white {
+    background-color: wheat;
+}
+
+.pos-black {
+    background-color: #875d26;
+    color: white; /* SOmente usado para localização na fase de programação */
+    
+}
+
+.black-cemetery {
+    width: 15%;
+    background-color: #b9b9ad;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid white;
+}
+
+.player-name-b{ 
+    background-color: black;
+    box-shadow: 1px 1px 4px white;
+}
+.player-name-b h3{
+    color: white;
+}
+
+.victory-screen{
+    position: absolute;
+    height: 0px;
+    width: 700px;
+    margin-top: 50px;
+    background-color: rgb(255, 255, 255);
+    background-size: 99%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    opacity: 0;
+    transition-duration: 1s;
+    box-shadow: 22px 22px 22222px black;
+}
+
+.victory-screen-header{
+    text-align: right;
+}
+
+.bt-close-modal{
+    padding: 3px;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.victory-screen-header i{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+.victory-screen-body{
+    text-align: center;
+    margin-top: 150px;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 22px black;
+}
+
+.alert-screen{
+    position: absolute;
+    font-size: 1.1em;
+    width: 300px;
+    height: 100px;
+    top: 200px;
+    background: linear-gradient( white 70%, black);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    transition-duration: 1s;
+    display:none;
+    opacity: 0;
+}
+
+.error-message{
+    padding: 20px;
+}
+
+.change-piece{
+    position: absolute;
+    background-image: linear-gradient( white, black, white);
+    height: 0px;
+    width: 400px;
+    transition-duration: 1s;
+    overflow: hidden;
+}
+
+.change-piece-header{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.change-piece-body{
+    margin: 20px; 
+    display:flex;
+    justify-content: space-around;
+}
+
+.change-piece-body img{
+    padding: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
