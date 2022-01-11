@@ -8,4 +8,5 @@ Para executar siga os seguintes passos:
 * Em seguida execute `npm start`
 * Abra duas abas no navegador acessando o mesmo link *http://localhost:779*
 
-![image](https://user-images.githubusercontent.com/97543142/149037288-36289dc3-cd98-4fdc-b16a-081b7b25bad2.png)
+![asd](https://user-images.githubusercontent.com/97543142/149037687-2b57016d-4f36-4a83-b186-a4a5e1272dfa.gif)
+
